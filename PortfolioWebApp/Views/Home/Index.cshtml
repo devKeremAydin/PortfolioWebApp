@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Navbar Section -->
+<nav id="navbar" class="flex s-around bg-color">
+    <div class="left-nav">
+        <h2 class="t-white">Portfolio</h2>
+    </div>
+    <div class="right-nav">
+        <ul class="flex">
+            <li><a href="#home" class="t-white roboto">Home</a></li>
+            <li><a href="#about" class="t-white roboto">About Me</a></li>
+            <li><a href="#skills" class="t-white roboto">Skills</a></li>
+            <li><a href="#Projects" class="t-white roboto">Projects</a></li>
+            <li><a href="#Contact" class="t-white roboto">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Home Section -->
+<section id="home" class="flex s-around sw-80 m-auto">
+    <div class="home-left flex items-center">
+        <div class="home-content">
+            <h6 class="welcomeText">Hi, I'm</h6>
+            <h1 class="t-white">Kerem Aydın</h1>
+            <h4 class="poppinss_animation">Software Developer</h4>
+            <a href="@Url.Content("~/Content/pdf/my_resume.pdf")" class="btn poppins" target="_blank">Resume</a>
+            <a class="btn live poppins" id="hireme" href="#Contact">Let's Talk</a>
+        </div>
+    </div>
+    <div class="home-right flex s-center items-center">
+        <div class="circle flex s-center items-center" id="mainImage">
+            <img src="@Url.Content("~/Content/images/my_ar_emoji.png")" alt="" />
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <h1 class="t-center my-2 t-white f-2">About Me</h1>
+    <div class="about-container flex s-around">
+        <div class="about-left flex s-center items-center">
+            <img src="@Url.Content("~/Content/images/computer.png")" style="width: 60%;" />
+        </div>
+        <div class="about-right flex">
+            <div class="about-content">
+                <h1 class="t-white m-b-1 poppins">Kerem Aydın</h1>
+                <p class="t-white poppins">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, recusandae...
+                </p>
+                <a class="btn" href="#Contact">Hire Me</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+    <h1 class="t-center my-2 t-white f-2">Skills</h1>
+    <div class="services-container flex s-around h-50">
+        <div class="skills-left flex s-center items-center">
+            <img src="@Url.Content("~/Content/images/pro.png")" alt="">
+        </div>
+        <div class="skills-right flex items-center">
+            <div class="skillss-container">
+                <div class="java bar p-relative"><span class="bar-content left t-white">C, C#</span><span class="bar-content right-skills t-white">80%</span></div>
+                <div class="html bar p-relative"><span class="bar-content left t-white">HTML</span><span class="bar-content right-skills t-white">70%</span></div>
+                <div class="css bar p-relative"><span class="bar-content left t-white">CSS</span><span class="bar-content right-skills t-white">60%</span></div>
+                <div class="js bar p-relative"><span class="bar-content left t-white">JavaScript</span><span class="bar-content right-skills t-white">65%</span></div>
+                <div class="python bar p-relative"><span class="bar-content left t-white">Python</span><span class="bar-content right-skills t-white">50%</span></div>
+                <div class="mysql bar p-relative"><span class="bar-content left t-white">MySQL</span><span class="bar-content right-skills t-white">40%</span></div>
+            </div>
+        </div>
+    </div>
+</section>
