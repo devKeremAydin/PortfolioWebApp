@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Admin Giriş";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="t-center t-white">Admin Panel Girişi</h2>
+
+<div class="form" style="width: 30%; margin: auto; padding: 2rem;">
+    @using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+    {
+        <div class="form-div">
+            <input type="text" name="username" placeholder="Kullanıcı Adı" class="poppins" required />
+        </div>
+        <div class="form-div">
+            <input type="password" name="password" placeholder="Şifre" class="poppins" required />
+        </div>
+        <button type="submit" class="btn poppins">Giriş Yap</button>
+    }
+
+    @if (ViewBag.Error != null)
+    {
+        <p style="color:red;">@ViewBag.Error</p>
+    }
+</div>

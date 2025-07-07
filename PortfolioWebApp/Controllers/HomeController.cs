@@ -1,12 +1,11 @@
 ﻿using System.Web.Mvc;
 using PortfolioWebApp.Models;
-using PortfolioWebApp.Data;
 
 namespace PortfolioWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext _context = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult Index()
         {
@@ -15,16 +14,16 @@ namespace PortfolioWebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(Contact contact)
+        public ActionResult Contact(Contact contact)
         {
             if (ModelState.IsValid)
             {
-                _context.Contacts.Add(contact);
-                _context.SaveChanges();
+                db.Contacts.Add(contact);
+                db.SaveChanges();
                 ViewBag.Message = "Mesajınız başarıyla gönderildi!";
             }
 
-            return View();
+            return View("Index");
         }
     }
 }

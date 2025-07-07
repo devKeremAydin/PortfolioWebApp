@@ -9,8 +9,7 @@ namespace PortfolioWebApp.Models
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        [EmailAddress]
+        [Required, EmailAddress]
         public string Email { get; set; }
 
         public string Number { get; set; }

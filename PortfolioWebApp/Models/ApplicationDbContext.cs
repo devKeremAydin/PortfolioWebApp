@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity;
-using PortfolioWebApp.Models;
 
-namespace PortfolioWebApp.Data
+namespace PortfolioWebApp.Models
 {
     public class ApplicationDbContext : DbContext
     {
