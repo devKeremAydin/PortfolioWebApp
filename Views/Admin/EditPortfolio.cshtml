@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Portfolyoyu Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="t-white">Portfolyoyu Düzenle</h2>
+
+<!-- Portfolyo Ekleme Formu -->
+@using (Html.BeginForm("EditPortfolio", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-div">
+        <label class="t-white">Başlık:</label><br />
+        <input type="text" name="Title" class="poppins" placeholder="Yeni Başlık" required />
+    </div>
+
+    <div class="form-div">
+        <label class="t-white">Açıklama:</label><br />
+        <textarea name="Description" rows="5" class="poppins" placeholder="Yeni açıklama" required></textarea>
+    </div>
+
+    <div class="form-div">
+        <label class="t-white">Yeni Fotoğraf:</label><br />
+        <input type="file" name="ImageFile" class="poppins" />
+    </div>
+
+    <div class="form-div" style="margin-top: 2rem;">
+        <button type="submit" class="btn m-top poppins">Kaydet</button>
+    </div>
+}
+
+<!-- Sıfırlama (Reset) Butonu -->
+@using (Html.BeginForm("ResetPortfolio", "Admin", FormMethod.Post))
+{
+    <div class="form-div">
+        <button type="submit" class="btn m-top poppins" style="background-color: red; color: white; margin-top: 1rem;">
+            Portfolyoyu Sıfırla
+        </button>
+    </div>
+}
+
+<!-- Başarı Mesajı -->
+@if (ViewBag.Message != null)
+{
+    <p class="t-white m-top">@ViewBag.Message</p>
+}
