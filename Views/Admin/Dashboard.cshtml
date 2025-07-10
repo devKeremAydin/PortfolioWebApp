@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<PortfolioWebApp.Models.Contact>
 
 @{
-    ViewBag.Title = "Admin Panel - Gelen Mesajlar";
+    ViewBag.Title = "Mesajları Listele";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2 class="t-center t-white">Gelen Mesajlar</h2>
+<h2 class="t-white">Gelen Mesajlar</h2>
 
-<div style="width: 90%; margin: auto;">
-    <table class="table table-bordered table-hover" style="color: white;">
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered table-hover" style="color: white; background-color: #1f1f38;">
         <thead>
             <tr>
                 <th>Ad</th>
@@ -29,7 +30,8 @@
             }
         </tbody>
     </table>
-    <div class="t-center">
-        <a class="btn m-top" href="@Url.Action("Logout", "Admin")">Çıkış Yap</a>
-    </div>
-</div>
+}
+else
+{
+    <p class="t-white">Hiç mesaj bulunamadı.</p>
+}

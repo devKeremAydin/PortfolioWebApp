@@ -12,12 +12,27 @@
 <body>
     <div style="display:flex; height:100vh;">
         <!-- Sol Menü -->
-        <div style="width: 220px; background-color: #2c2c6c; padding: 1rem;">
-            <h3 class="t-white">Admin Panel</h3>
+        <div style="width: 250px; background-color: #2c2c6c; padding: 2rem;">
+            <h2 class="t-white">Admin Panel</h2>
             <ul style="list-style:none; padding-left:0;">
-                <li><a href="@Url.Action("Dashboard", "Admin")" class="btn m-top">Mesajları Listele</a></li>
-                <li><a href="@Url.Action("EditPortfolio", "Admin")" class="btn m-top">Portfolyoyu Düzenle</a></li>
-                <li><a href="@Url.Action("Logout", "Admin")" class="btn m-top">Çıkış Yap</a></li>
+                <li style="margin-bottom:1rem;">
+                    <a href="@Url.Action("Dashboard", "Admin")" class="t-white poppins">Mesajları Listele</a>
+                </li>
+
+                <li class="t-white poppins" style="margin-bottom:0.5rem; font-weight:bold;">Bilgi Düzenle</li>
+                <li style="margin-left: 1rem; margin-bottom:0.5rem;">
+                    <a href="@Url.Action("EditPersonalInfo", "Admin")" class="t-white poppins">Kişisel Bilgileri Düzenle</a>
+                </li>
+                <li style="margin-left: 1rem; margin-bottom:0.5rem;">
+                    <a href="@Url.Action("EditSkills", "Admin")" class="t-white poppins">Yetenekleri Düzenle</a>
+                </li>
+                <li style="margin-left: 1rem; margin-bottom:1rem;">
+                    <a href="@Url.Action("EditPortfolio", "Admin")" class="t-white poppins">Projeleri Düzenle</a>
+                </li>
+
+                <li style="margin-top:2rem;">
+                    <a href="@Url.Action("Logout", "Admin")" class="btn">Çıkış Yap</a>
+                </li>
             </ul>
         </div>
 

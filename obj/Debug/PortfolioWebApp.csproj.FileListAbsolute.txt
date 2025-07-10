@@ -168,3 +168,6 @@ C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWeb
 C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWebApp.pdb
 C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWebApp.Migrations.InitialCreate.resources
 C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWebApp.csproj.GenerateResource.cache
+C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWebApp.Migrations.AddSkillTable.resources
+C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWebApp.Migrations.AddPersonalInfo.resources
+C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWebApp.Migrations.AddSkillTable1.resources

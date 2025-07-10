@@ -1,0 +1,34 @@
+﻿@model PortfolioWebApp.Models.PersonalInfo
+@{
+    ViewBag.Title = "Kişisel Bilgileri Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="t-white">Kişisel Bilgileri Güncelle</h2>
+
+@using (Html.BeginForm("EditPersonalInfo", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-div">
+        <label class="t-white">Ad Soyad:</label><br />
+        @Html.TextBoxFor(m => m.FullName, new { @class = "poppins", required = "required" })
+    </div>
+
+    <div class="form-div">
+        <label class="t-white">CV (PDF):</label><br />
+        <input type="file" name="CVFile" class="poppins" />
+    </div>
+
+    <div class="form-div">
+        <label class="t-white">Profil Fotoğrafı:</label><br />
+        <input type="file" name="ProfileImage" class="poppins" />
+    </div>
+
+    <button type="submit" class="btn poppins m-top">Kaydet</button>
+}
+
+@if (ViewBag.Message != null)
+{
+    <p class="t-white m-top">@ViewBag.Message</p>
+}

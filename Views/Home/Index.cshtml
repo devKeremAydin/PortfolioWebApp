@@ -20,22 +20,41 @@
 </nav>
 
 <!-- Home Section -->
+@{
+    var info = ViewBag.PersonalInfo as PortfolioWebApp.Models.PersonalInfo;
+}
+
 <section id="home" class="flex s-around sw-80 m-auto">
     <div class="home-left flex items-center">
         <div class="home-content">
             <h6 class="welcomeText">Hi, I'm</h6>
-            <h1 class="t-white">Kerem Aydın</h1>
+            <h1 class="t-white">@((info != null) ? info.FirstName + " " + info.LastName : "Kerem Aydın")</h1>
             <h4 class="poppinss_animation">Software Developer</h4>
-            <a href="@Url.Content("~/Content/pdf/my_resume.pdf")" target="_blank" class="btn poppins">Resume</a>
+            @if (info != null && !string.IsNullOrEmpty(info.CvPath))
+            {
+                <a href="@Url.Content(info.CvPath)" target="_blank" class="btn poppins">Resume</a>
+            }
+            else
+            {
+                <a class="btn poppins">CV Eklenmedi</a>
+            }
             <a class="btn live poppins" id="hireme" href="#Contact">Let's Talk</a>
         </div>
     </div>
     <div class="home-right flex s-center items-center">
         <div class="circle flex s-center items-center" id="mainImage">
-            <img src="@Url.Content("~/Content/images/my_ar_emoji.png")" alt="">
+            @if (info != null && !string.IsNullOrEmpty(info.ProfileImagePath))
+            {
+                <img src="@Url.Content(info.ProfileImagePath)" alt="">
+            }
+            else
+            {
+                <img src="@Url.Content("~/Content/images/my_ar_emoji.png")" alt="">
+            }
         </div>
     </div>
 </section>
+
 
 <!-- About Section -->
 <section id="about">
@@ -65,16 +84,21 @@
         </div>
         <div class="skills-right flex items-center">
             <div class="skillss-container">
-                <div class="java bar p-relative"><span class="bar-content left t-white">C, C#</span><span class="bar-content right-skills t-white">80%</span></div>
-                <div class="html bar p-relative"><span class="bar-content left t-white">HTML</span><span class="bar-content right-skills t-white">70%</span></div>
-                <div class="css bar p-relative"><span class="bar-content left t-white">CSS</span><span class="bar-content right-skills t-white">60%</span></div>
-                <div class="js bar p-relative"><span class="bar-content left t-white">JavaScript</span><span class="bar-content right-skills t-white">65%</span></div>
-                <div class="python bar p-relative"><span class="bar-content left t-white">Python</span><span class="bar-content right-skills t-white">50%</span></div>
-                <div class="mysql bar p-relative"><span class="bar-content left t-white">MySQL</span><span class="bar-content right-skills t-white">40%</span></div>
+                @foreach (var skill in ViewBag.Skills as List<PortfolioWebApp.Models.Skill>)
+                {
+                    <div class="bar p-relative">
+                        <span class="bar-content left t-white">@skill.Name</span>
+                        <span class="bar-content right-skills t-white">@skill.Percentage%</span>
+                        <div class="bar-inner" style="background-color: #fff; height: 10px; margin-top: 5px; position: relative;">
+                            <div style="width:@skill.Percentage%; background-color:#00aaff; height: 100%; position: absolute;"></div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
 </section>
+
 
 <!-- Projects Section -->
 <!-- Projects Section -->
@@ -101,7 +125,7 @@
         }
     </div>
 </section>
- 
+
 
 
 

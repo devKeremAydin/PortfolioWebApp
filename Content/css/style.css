@@ -400,3 +400,18 @@ ul li {
 	color: #1f1f38;
 	background-color: #da7fa8;
 }
+.bar {
+	margin-bottom: 1rem;
+}
+
+.bar-content {
+	display: inline-block;
+}
+
+	.bar-content.left {
+		float: left;
+	}
+
+	.bar-content.right-skills {
+		float: right;
+	}

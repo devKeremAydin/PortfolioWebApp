@@ -38,6 +38,61 @@ namespace PortfolioWebApp.Controllers
             return View(messages);
         }
 
+        public ActionResult Logout()
+        {
+            Session["Admin"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult EditPersonalInfo()
+        {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login");
+
+            return View(new PersonalInfoViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPersonalInfo(PersonalInfoViewModel model, HttpPostedFileBase ProfileImage, HttpPostedFileBase CvFile)
+        {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login");
+
+            ViewBag.Message = "Bilgiler başarıyla güncellendi!";
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult EditSkills()
+        {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login");
+
+            var skills = db.Skills.ToList();
+            ViewBag.Skills = skills;
+            return View(new Skill());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditSkills(Skill skill)
+        {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login");
+
+            if (ModelState.IsValid)
+            {
+                db.Skills.Add(skill);
+                db.SaveChanges();
+                ViewBag.Message = $"{skill.Name} (%{skill.Percentage}) başarıyla eklendi.";
+            }
+
+            ViewBag.Skills = db.Skills.ToList();
+            return View(new Skill());
+        }
+
         [HttpGet]
         public ActionResult EditPortfolio()
         {
@@ -76,6 +131,7 @@ namespace PortfolioWebApp.Controllers
             ViewBag.Message = "Portfolyo başarıyla eklendi.";
             return View();
         }
+
         [HttpPost]
         public ActionResult ResetPortfolio()
         {
@@ -89,11 +145,18 @@ namespace PortfolioWebApp.Controllers
             ViewBag.Message = "Tüm portfolyo kayıtları sıfırlandı.";
             return RedirectToAction("EditPortfolio");
         }
-
-        public ActionResult Logout()
+        [HttpPost]
+        public ActionResult ResetSkills()
         {
-            Session["Admin"] = null;
-            return RedirectToAction("Login");
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login");
+
+            var allSkills = db.Skills.ToList();
+            db.Skills.RemoveRange(allSkills);
+            db.SaveChanges();
+
+            ViewBag.Message = "Tüm yetenekler başarıyla sıfırlandı.";
+            return RedirectToAction("EditSkills");
         }
     }
 }

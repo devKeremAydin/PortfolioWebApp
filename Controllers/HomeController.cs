@@ -10,10 +10,19 @@ namespace PortfolioWebApp.Controllers
 
         public ActionResult Index()
         {
+            // Portfolyo verilerini al
             var portfolios = db.PortfolioItems.ToList();
             ViewBag.PortfolioItems = portfolios;
 
-            // TempData ile mesaj geldiyse view'a aktar
+            // Yetenek verilerini al
+            var skills = db.Skills.ToList();
+            ViewBag.Skills = skills;
+
+            // Kişisel bilgi verisini al
+            var personalInfo = db.PersonalInfos.FirstOrDefault();
+            ViewBag.PersonalInfo = personalInfo;
+
+            // TempData ile gelen mesajı aktar
             if (TempData["Message"] != null)
                 ViewBag.Message = TempData["Message"];
 

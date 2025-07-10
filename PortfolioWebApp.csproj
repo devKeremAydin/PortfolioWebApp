@@ -136,10 +136,25 @@
     <Compile Include="Migrations\202507101050583_InitialCreate.Designer.cs">
       <DependentUpon>202507101050583_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202507101126252_AddSkillTable.cs" />
+    <Compile Include="Migrations\202507101126252_AddSkillTable.Designer.cs">
+      <DependentUpon>202507101126252_AddSkillTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202507101128389_AddPersonalInfo.cs" />
+    <Compile Include="Migrations\202507101128389_AddPersonalInfo.Designer.cs">
+      <DependentUpon>202507101128389_AddPersonalInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202507101152212_AddSkillTable1.cs" />
+    <Compile Include="Migrations\202507101152212_AddSkillTable1.Designer.cs">
+      <DependentUpon>202507101152212_AddSkillTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\PersonalInfo.cs" />
+    <Compile Include="Models\PersonalInfoViewModel.cs" />
     <Compile Include="Models\PortfolioItem.cs" />
+    <Compile Include="Models\Skill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +213,8 @@
     <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\EditPortfolio.cshtml" />
+    <Content Include="Views\Admin\EditSkills.cshtml" />
+    <Content Include="Views\Admin\EditPersonalInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -233,6 +250,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202507101050583_InitialCreate.resx">
       <DependentUpon>202507101050583_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202507101126252_AddSkillTable.resx">
+      <DependentUpon>202507101126252_AddSkillTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202507101128389_AddPersonalInfo.resx">
+      <DependentUpon>202507101128389_AddPersonalInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202507101152212_AddSkillTable1.resx">
+      <DependentUpon>202507101152212_AddSkillTable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
