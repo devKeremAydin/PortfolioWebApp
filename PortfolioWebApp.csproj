@@ -132,13 +132,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202507081203538_UpdateContactModel.cs" />
-    <Compile Include="Migrations\202507081203538_UpdateContactModel.Designer.cs">
-      <DependentUpon>202507081203538_UpdateContactModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202507091057402_CreatePortfolioItemTable.cs" />
-    <Compile Include="Migrations\202507091057402_CreatePortfolioItemTable.Designer.cs">
-      <DependentUpon>202507091057402_CreatePortfolioItemTable.cs</DependentUpon>
+    <Compile Include="Migrations\202507101050583_InitialCreate.cs" />
+    <Compile Include="Migrations\202507101050583_InitialCreate.Designer.cs">
+      <DependentUpon>202507101050583_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -235,11 +231,8 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202507081203538_UpdateContactModel.resx">
-      <DependentUpon>202507081203538_UpdateContactModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507091057402_CreatePortfolioItemTable.resx">
-      <DependentUpon>202507091057402_CreatePortfolioItemTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507101050583_InitialCreate.resx">
+      <DependentUpon>202507101050583_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

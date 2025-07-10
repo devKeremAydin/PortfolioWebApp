@@ -1,0 +1,31 @@
+﻿@model List<PortfolioWebApp.Models.Skill>
+@{
+    ViewBag.Title = "Yetenekleri Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yetenekleri Düzenle</h2>
+
+<!-- Yeni Yetenek Ekle -->
+@using (Html.BeginForm("AddSkill", "Admin", FormMethod.Post))
+{
+    <input type="text" name="Name" placeholder="Yetenek Adı" required />
+    <input type="number" name="Percentage" placeholder="%" min="0" max="100" required />
+    <input type="text" name="ColorClass" placeholder="CSS Sınıfı (örneğin: html, css)" />
+    <button type="submit">Ekle</button>
+}
+
+<hr />
+
+<!-- Mevcut Yetenekleri Güncelle -->
+@foreach (var item in Model)
+{
+    @using (Html.BeginForm("UpdateSkill", "Admin", FormMethod.Post))
+    {
+        <input type="hidden" name="Id" value="@item.Id" />
+        <input type="text" name="Name" value="@item.Name" required />
+        <input type="number" name="Percentage" value="@item.Percentage" min="0" max="100" required />
+        <input type="text" name="ColorClass" value="@item.ColorClass" />
+        <button type="submit">Güncelle</button>
+    }
+}

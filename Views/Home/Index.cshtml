@@ -81,19 +81,28 @@
 <section id="Projects">
     <h1 class="t-center my-2 t-white f-2">Projects</h1>
     <div class="projects-container flex s-center">
-        @foreach (var item in ViewBag.Portfolios as List<PortfolioWebApp.Models.PortfolioItem>)
+        @if (ViewBag.PortfolioItems != null)
         {
-            <div class="projects-item flex f-col s-center items-center">
-                <h1 class="t-white poppins">@item.Title</h1>
-                <p class="t-white poppins">@item.Description</p>
-                @if (!string.IsNullOrEmpty(item.ImagePath))
-                {
-                    <img src="@Url.Content(item.ImagePath)" alt="project image" style="width:100%; margin-top:1rem;" />
-                }
-            </div>
+            foreach (var item in ViewBag.PortfolioItems as List<PortfolioWebApp.Models.PortfolioItem>)
+            {
+                <div class="projects-item flex f-col s-center items-center">
+                    <h1 class="t-white poppins">@item.Title</h1>
+                    <p class="t-white poppins">@item.Description</p>
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+                        <img src="@Url.Content(item.ImagePath)" alt="project image" style="width:100%; margin-top:1rem;" />
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            <p class="t-white">Henüz bir portfolyo projesi eklenmedi.</p>
         }
     </div>
 </section>
+
+
 
 
 <!-- Contact Me Section -->

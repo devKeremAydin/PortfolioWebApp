@@ -11,10 +11,14 @@ namespace PortfolioWebApp.Controllers
         public ActionResult Index()
         {
             var portfolios = db.PortfolioItems.ToList();
-            ViewBag.Portfolios = portfolios;
+            ViewBag.PortfolioItems = portfolios;
+
+            // TempData ile mesaj geldiyse view'a aktar
+            if (TempData["Message"] != null)
+                ViewBag.Message = TempData["Message"];
+
             return View();
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -24,10 +28,12 @@ namespace PortfolioWebApp.Controllers
             {
                 db.Contacts.Add(contact);
                 db.SaveChanges();
-                ViewBag.Message = "Mesajınız başarıyla gönderildi!";
+
+                // Redirect sonrası mesaj göstermek için TempData kullan
+                TempData["Message"] = "Mesajınız başarıyla gönderildi!";
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
     }
 }
