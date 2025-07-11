@@ -1,4 +1,5 @@
 ﻿@model PortfolioWebApp.Models.PersonalInfo
+
 @{
     ViewBag.Title = "Kişisel Bilgileri Düzenle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -11,18 +12,32 @@
     @Html.AntiForgeryToken()
 
     <div class="form-div">
-        <label class="t-white">Ad Soyad:</label><br />
-        @Html.TextBoxFor(m => m.FullName, new { @class = "poppins", required = "required" })
+        <label class="t-white">Ad:</label><br />
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "poppins", required = "required", placeholder = "Adınızı girin" })
+    </div>
+
+    <div class="form-div">
+        <label class="t-white">Soyad:</label><br />
+        @Html.TextBoxFor(m => m.LastName, new { @class = "poppins", required = "required", placeholder = "Soyadınızı girin" })
     </div>
 
     <div class="form-div">
         <label class="t-white">CV (PDF):</label><br />
-        <input type="file" name="CVFile" class="poppins" />
+        <input type="file" name="CvFile" class="poppins" />
+        @if (!string.IsNullOrEmpty(Model.CvPath))
+        {
+            <p class="t-white m-top">Yüklü CV: <a href="@Url.Content(Model.CvPath)" target="_blank" style="color:lightblue;">Görüntüle</a></p>
+        }
     </div>
 
     <div class="form-div">
         <label class="t-white">Profil Fotoğrafı:</label><br />
         <input type="file" name="ProfileImage" class="poppins" />
+        @if (!string.IsNullOrEmpty(Model.ProfileImagePath))
+        {
+            <p class="t-white m-top">Mevcut Fotoğraf:</p>
+            <img src="@Url.Content(Model.ProfileImagePath)" style="width:100px; height:auto; border-radius: 8px;" />
+        }
     </div>
 
     <button type="submit" class="btn poppins m-top">Kaydet</button>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PortfolioWebApp.Models;
@@ -50,18 +51,51 @@ namespace PortfolioWebApp.Controllers
             if (Session["Admin"] == null)
                 return RedirectToAction("Login");
 
-            return View(new PersonalInfoViewModel());
+            var info = db.PersonalInfos.FirstOrDefault();
+            if (info == null)
+                info = new PersonalInfo();
+
+            return View(info);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPersonalInfo(PersonalInfoViewModel model, HttpPostedFileBase ProfileImage, HttpPostedFileBase CvFile)
+        public ActionResult EditPersonalInfo(PersonalInfo model, HttpPostedFileBase ProfileImage, HttpPostedFileBase CvFile)
         {
             if (Session["Admin"] == null)
                 return RedirectToAction("Login");
 
+            var info = db.PersonalInfos.FirstOrDefault();
+
+            if (info == null)
+            {
+                info = new PersonalInfo();
+                db.PersonalInfos.Add(info);
+            }
+
+            info.FirstName = model.FirstName;
+            info.LastName = model.LastName;
+
+            if (ProfileImage != null && ProfileImage.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(ProfileImage.FileName);
+                var path = Path.Combine(Server.MapPath("~/Content/images/"), fileName);
+                ProfileImage.SaveAs(path);
+                info.ProfileImagePath = "/Content/images/" + fileName;
+            }
+
+            if (CvFile != null && CvFile.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(CvFile.FileName);
+                var path = Path.Combine(Server.MapPath("~/Content/cv/"), fileName);
+                CvFile.SaveAs(path);
+                info.CvPath = "/Content/cv/" + fileName;
+            }
+
+            db.SaveChanges();
+
             ViewBag.Message = "Bilgiler başarıyla güncellendi!";
-            return View(model);
+            return View(info);
         }
 
         [HttpGet]
@@ -145,6 +179,7 @@ namespace PortfolioWebApp.Controllers
             ViewBag.Message = "Tüm portfolyo kayıtları sıfırlandı.";
             return RedirectToAction("EditPortfolio");
         }
+
         [HttpPost]
         public ActionResult ResetSkills()
         {
@@ -159,4 +194,4 @@ namespace PortfolioWebApp.Controllers
             return RedirectToAction("EditSkills");
         }
     }
-} 
+}
