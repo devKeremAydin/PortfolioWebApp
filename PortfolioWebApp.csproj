@@ -148,6 +148,14 @@
     <Compile Include="Migrations\202507101152212_AddSkillTable1.Designer.cs">
       <DependentUpon>202507101152212_AddSkillTable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202507111307339_AddColorToSkills.cs" />
+    <Compile Include="Migrations\202507111307339_AddColorToSkills.Designer.cs">
+      <DependentUpon>202507111307339_AddColorToSkills.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202507111319519_AddAboutTextToPersonalInfo.cs" />
+    <Compile Include="Migrations\202507111319519_AddAboutTextToPersonalInfo.Designer.cs">
+      <DependentUpon>202507111319519_AddAboutTextToPersonalInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -260,6 +268,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202507101152212_AddSkillTable1.resx">
       <DependentUpon>202507101152212_AddSkillTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202507111307339_AddColorToSkills.resx">
+      <DependentUpon>202507111307339_AddColorToSkills.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202507111319519_AddAboutTextToPersonalInfo.resx">
+      <DependentUpon>202507111319519_AddAboutTextToPersonalInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

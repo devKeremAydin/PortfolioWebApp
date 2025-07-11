@@ -75,6 +75,7 @@ namespace PortfolioWebApp.Controllers
 
             info.FirstName = model.FirstName;
             info.LastName = model.LastName;
+            info.AboutText = model.AboutText; // Hakkımda metni güncelleniyor
 
             if (ProfileImage != null && ProfileImage.ContentLength > 0)
             {
@@ -96,6 +97,23 @@ namespace PortfolioWebApp.Controllers
 
             ViewBag.Message = "Bilgiler başarıyla güncellendi!";
             return View(info);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ClearAboutText()
+        {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login");
+
+            var info = db.PersonalInfos.FirstOrDefault();
+            if (info != null)
+            {
+                info.AboutText = null;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("EditPersonalInfo");
         }
 
         [HttpGet]
@@ -127,6 +145,20 @@ namespace PortfolioWebApp.Controllers
             return View(new Skill());
         }
 
+        [HttpPost]
+        public ActionResult ResetSkills()
+        {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login");
+
+            var allSkills = db.Skills.ToList();
+            db.Skills.RemoveRange(allSkills);
+            db.SaveChanges();
+
+            ViewBag.Message = "Tüm yetenekler başarıyla sıfırlandı.";
+            return RedirectToAction("EditSkills");
+        }
+
         [HttpGet]
         public ActionResult EditPortfolio()
         {
@@ -146,7 +178,7 @@ namespace PortfolioWebApp.Controllers
 
             if (ImageFile != null && ImageFile.ContentLength > 0)
             {
-                var fileName = System.IO.Path.GetFileName(ImageFile.FileName);
+                var fileName = Path.GetFileName(ImageFile.FileName);
                 var path = Server.MapPath("~/Content/images/" + fileName);
                 ImageFile.SaveAs(path);
                 imagePath = "/Content/images/" + fileName;
@@ -181,17 +213,34 @@ namespace PortfolioWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult ResetSkills()
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteMessage(int id)
         {
             if (Session["Admin"] == null)
                 return RedirectToAction("Login");
 
-            var allSkills = db.Skills.ToList();
-            db.Skills.RemoveRange(allSkills);
+            var message = db.Contacts.Find(id);
+            if (message != null)
+            {
+                db.Contacts.Remove(message);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Dashboard");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteAllMessages()
+        {
+            if (Session["Admin"] == null)
+                return RedirectToAction("Login");
+
+            var allMessages = db.Contacts.ToList();
+            db.Contacts.RemoveRange(allMessages);
             db.SaveChanges();
 
-            ViewBag.Message = "Tüm yetenekler başarıyla sıfırlandı.";
-            return RedirectToAction("EditSkills");
+            return RedirectToAction("Dashboard");
         }
     }
 }

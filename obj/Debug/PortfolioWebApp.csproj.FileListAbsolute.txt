@@ -171,3 +171,5 @@ C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWeb
 C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWebApp.Migrations.AddSkillTable.resources
 C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWebApp.Migrations.AddPersonalInfo.resources
 C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWebApp.Migrations.AddSkillTable1.resources
+C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWebApp.Migrations.AddColorToSkills.resources
+C:\Users\Job\source\repos\PortfolioWebApp\PortfolioWebApp\obj\Debug\PortfolioWebApp.Migrations.AddAboutTextToPersonalInfo.resources

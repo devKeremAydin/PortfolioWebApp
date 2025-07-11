@@ -415,3 +415,7 @@ ul li {
 	.bar-content.right-skills {
 		float: right;
 	}
+.btn:hover {
+	transform: scale(1.05);
+	transition: all 0.3s ease;
+}

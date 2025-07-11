@@ -15,5 +15,7 @@ namespace PortfolioWebApp.Models
         public string ProfileImagePath { get; set; }
 
         public string CvPath { get; set; }
+
+        public string AboutText { get; set; }
     }
 }

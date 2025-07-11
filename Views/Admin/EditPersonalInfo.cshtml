@@ -22,6 +22,11 @@
     </div>
 
     <div class="form-div">
+        <label class="t-white">Hakkımda Metni:</label><br />
+        @Html.TextAreaFor(m => m.AboutText, new { @class = "poppins", rows = 5, placeholder = "Hakkınızda kısa bir açıklama yazın..." })
+    </div>
+
+    <div class="form-div">
         <label class="t-white">CV (PDF):</label><br />
         <input type="file" name="CvFile" class="poppins" />
         @if (!string.IsNullOrEmpty(Model.CvPath))
@@ -41,6 +46,13 @@
     </div>
 
     <button type="submit" class="btn poppins m-top">Kaydet</button>
+}
+
+<!-- Metni Sil Butonu -->
+@using (Html.BeginForm("ClearAboutText", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn poppins" style="margin-top: 1rem; background-color: red; color: white;">Hakkımda Metnini Sil</button>
 }
 
 @if (ViewBag.Message != null)

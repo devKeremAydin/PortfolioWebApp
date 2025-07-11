@@ -29,7 +29,8 @@
         <div class="home-content">
             <h6 class="welcomeText">Hi, I'm</h6>
             <h1 class="t-white">@((info != null) ? info.FirstName + " " + info.LastName : "Kerem Aydın")</h1>
-            <h4 class="poppinss_animation">Software Developer</h4>
+            <h4 class="poppinss_animation" style="margin-bottom: 1.5rem;">Software Developer</h4>
+
             @if (info != null && !string.IsNullOrEmpty(info.CvPath))
             {
                 <a href="@Url.Content(info.CvPath)" target="_blank" class="btn poppins">Resume</a>
@@ -57,17 +58,18 @@
 
 
 <!-- About Section -->
+<!-- About Section -->
 <section id="about">
     <h1 class="t-center my-2 t-white f-2">About Me</h1>
-    <div class="about-container flex s-around ">
+    <div class="about-container flex s-around">
         <div class="about-left flex s-center items-center">
             <img src="@Url.Content("~/Content/images/computer.png")" alt="" style="width: 60%;">
         </div>
         <div class="about-right flex">
             <div class="about-content">
-                <h1 class="t-white m-b-1 poppins">Kerem Aydın</h1>
+                <h1 class="t-white m-b-1 poppins">@((info != null) ? info.FirstName + " " + info.LastName : "Kerem Aydın")</h1>
                 <p class="t-white poppins">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, recusandae ipsa laboriosam a, consectetur distinctio provident doloremque, nisi perspiciatis tenetur eos ipsam fugiat itaque ex facere? Harum ipsa voluptate alias!
+                    @((info != null && !string.IsNullOrEmpty(info.AboutText)) ? info.AboutText : "Henüz hakkında metni eklenmedi.")
                 </p>
                 <a class="btn" id="hireme" href="#Contact">Hire Me</a>
             </div>
@@ -76,6 +78,7 @@
 </section>
 
 <!-- Skills Section -->
+<!-- Skills Section -->
 <section id="skills">
     <h1 class="t-center my-2 t-white f-2">Skills</h1>
     <div class="services-container flex s-around h-50">
@@ -83,14 +86,21 @@
             <img src="@Url.Content("~/Content/images/pro.png")" alt="">
         </div>
         <div class="skills-right flex items-center">
-            <div class="skillss-container">
+            <div class="skillss-container" style="width: 100%;">
                 @foreach (var skill in ViewBag.Skills as List<PortfolioWebApp.Models.Skill>)
                 {
-                    <div class="bar p-relative">
-                        <span class="bar-content left t-white">@skill.Name</span>
-                        <span class="bar-content right-skills t-white">@skill.Percentage%</span>
-                        <div class="bar-inner" style="background-color: #fff; height: 10px; margin-top: 5px; position: relative;">
-                            <div style="width:@skill.Percentage%; background-color:#00aaff; height: 100%; position: absolute;"></div>
+                    <div class="bar p-relative" style="margin-bottom: 2rem;">
+                        <div class="t-white flex s-between" style="margin-bottom: 5px;">
+                            <span>@skill.Name</span>
+                            <span>@skill.Percentage%</span>
+                        </div>
+
+                        <div style="
+                             width:@skill.Percentage%;
+                             height: 12px;
+                             border-radius: 6px;
+                             background-color: @(string.IsNullOrEmpty(skill.ColorCode) ? "#00aaff" : skill.ColorCode);
+                             transition: width 0.5s;">
                         </div>
                     </div>
                 }
@@ -98,6 +108,7 @@
         </div>
     </div>
 </section>
+
 
 
 <!-- Projects Section -->

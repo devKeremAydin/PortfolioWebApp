@@ -11,5 +11,6 @@ namespace PortfolioWebApp.Models
 
         [Range(0, 100)]
         public int Percentage { get; set; }
+        public string ColorCode { get; set; }
     }
 }
